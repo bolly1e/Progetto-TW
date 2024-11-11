@@ -11,9 +11,17 @@
   </head>
 
   <body>
-    <div class="col d-flex justify-content-center" id="Screen">
-      <div class="row d-flex align-items-center">
-        <form id="Form">
+    <div
+      class="col d-flex justify-content-center align-items-center"
+      id="Screen"
+    >
+      <form class="row" id="Form">
+        <div class="col">
+          <div class="row">
+            <div class="col d-flex justify-content-center">
+              <h1><b>LOGIN</b></h1>
+            </div>
+          </div>
           <div class="form-group">
             <label for="input-email"><b>Email address</b></label>
             <input
@@ -47,10 +55,11 @@
                 type="submit"
                 class="btn btn-primary"
                 id="btn"
-                onclick="location.href='/Singup/Index.html'; return false" 
+                onclick="location.href='/Singup/Index.html'; return false"
               >
                 Singup
-              </button> <!-- return false per non ritornare anche il form --> 
+              </button>
+              <!-- return false per non ritornare anche il form -->
             </div>
           </div>
           <div class="row">
@@ -61,8 +70,8 @@
               <a href="/Reset/Index.html">Reset</a>
             </div>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   </body>
 </html>
