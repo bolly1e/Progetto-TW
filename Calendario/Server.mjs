@@ -1,8 +1,8 @@
-import { User, Day } from "./public/Calendario.js";
+import { User, Day, Today, Evento } from "./views/Calendario.js";
 import { MongoClient } from "mongodb";
-import express from 'express';
+import express from "express";
 const app = express();
-app.use(express.static('public'));
+app.use(express.static("public"));
 
 const database = "ProgettoTW";
 const collection = "Eventi e note";
@@ -22,7 +22,7 @@ async function newUser(name) {
 }
 
 async function getUser(name) {
-  try{
+  try {
     await client.connect();
     const db = client.db(database);
     const coll = db.collection(collection);
@@ -87,18 +87,42 @@ async function fetchDay(name, day) {
   ];
 }
 
+//=============================================================================================
 
+import bodyParser from "body-parser";
+const server = express();
+server.use(bodyParser.urlencoded({ extended: true }));
+server.use(bodyParser.json());
+server.set("view engine", "ejs");
 
-let d = new Day(24, 11, 2024);
-await updateNotes('Lollo', d, 'Ciao');
-let u = await getUser('Lollo');
-
-// Endpoint to send dynamic content
-app.get("/get-special-content", (req, res) => {
-  res.json({ main: u });
+server.get("/views/Mese", (req, res) => {
+  res.render("Mese");
+});
+server.get("/views/Settimana", (req, res) => {
+  res.render("Settimana");
 });
 
-// Start the server
-app.listen(3000, () => {
-  console.log("Server running at http://localhost:3000");
+let user = "Lollo";
+let dd = new Day(17, 12, 2024);
+let e = new Array(10);
+for (let i = 0; i < 10; i++) {
+  e[i] = new Evento(i, 5, 6);
+}
+//await updateEvents(user, dd, e);
+let table = await getUser(user);
+
+server.get("/data", (req, res) => {
+  res.json({ user: table });
+});
+
+server.post("/data", async (req, res) => {
+  await updateNotes(user, dd, req.body.note);
+  table = await getUser(user);
+  res.redirect('/views/Mese');
+});
+
+server.use(express.static("."));
+
+server.listen(3000, () => {
+  console.log("ready");
 });
