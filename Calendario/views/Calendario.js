@@ -5,9 +5,13 @@ export class Day {
     this.y = y;
     this.bold = false; //per capire se da fare in grassetto, vedi Mese.html
     this.note = ""; //note da mostrare successivamente
-    this.eventi = new Array(10); //array di eventi
-    for (let i=0; i<10; i++){
-      this.eventi[i] = new Evento('', '', '');
+    this.eventi = new Array(10);
+    for (let i = 0; i < 10; i++) {
+      this.eventi[i] = new Evento("", "", "", "", "");
+    }
+    this.act = new Array(10); //array di attivita'
+    for (let i = 0; i < 10; i++) {
+      this.act[i] = new Attivita("", "", "");
     }
   }
   isMonday() {
@@ -17,11 +21,20 @@ export class Day {
 }
 
 export class Evento {
-  constructor(event, inizio, fine) {
-    //event e' una stringa
-    this.event = event.toString();
+  constructor(desc, inizio, fine, titolo, luogo) {
+    this.desc = desc.toString(); 
     this.i = inizio; //Ora
     this.f = fine; //Ora
+    this.titolo = titolo;
+    this.luogo = luogo;
+  }
+}
+
+export class Attivita {
+  constructor(inizio, fine, desc) {
+    this.i = inizio;
+    this.f = fine;
+    this.desc = desc;
   }
 }
 
@@ -33,11 +46,11 @@ export class Week {
     this.w = w; //da 1 a 4 compreso
     this.m = m;
     this.y = y;
-    this.week = new Array(7);
+    this.days = new Array(7);
     let tmp = new Month(m, y);
     tmp.Print(); // inizializza il mese, vedi giu
     for (let i = 0; i < 7; i++) {
-      this.week[i] = new Day(tmp.print[w * 7 + i - 7]).d;
+      this.days[i] = new Day(tmp.print[w * 7 + i - 7]).d;
     }
   }
 }
@@ -49,9 +62,6 @@ export class Month {
     // Come per le settimane i mesi sono diversi, ho deciso di dividerli in blocchi da 42. I giorni aggiuntivi sono trovati
     // con le funzioni che vedi sotto.
     this.print = new Array(42);
-    for (let i = 0; i < 42; i++) {
-      this.print[i] = new Day(1, 1, 1); //inizializzazione con valori casuali
-    }
     //in input valore del mese vero, ad esempio genneaio = 1
     if (m == 1 || m == 3 || m == 5 || m == 7 || m == 8 || m == 10 || m == 12) {
       //gennaio, marzo, maggio, luglio, agosto, ottobre, dicembre
@@ -153,7 +163,7 @@ export class Decade {
 
 export class User {
   constructor() {
-    this.grid = new Decade(ActualYear());
+    this.grid = new Decade(ActualYear() - 1);
   }
 }
 

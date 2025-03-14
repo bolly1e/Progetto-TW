@@ -130,6 +130,15 @@ a{
   background-color: white;
   border-radius: 10px;
   transition: all 0.5s ease;
+  height: 90vh;
+  width: 90vh;
+  padding: 20px;
+}
+
+.modal-container-insert {
+  background-color: white;
+  border-radius: 10px;
+  transition: all 0.5s ease;
   height: 80vh;
   width: 80vh;
   padding: 20px;
@@ -142,6 +151,7 @@ a{
   color: white;
 }
 
+
 #insert-note {
   border: solid 0.5px black;
   margin-bottom: 10px;
@@ -153,9 +163,10 @@ a{
 
 #events-cont {
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: lightgray;
-  margin: 5px;
+  padding: 5px;
+  margin-bottom: 5px;
 }
 
 #button-event-int{
@@ -171,4 +182,48 @@ a{
 
 #a-tran:hover{
   background-color: lightgray;
+}
+
+#button-remove, 
+#button-modify{
+  border: none;
+  background-color: lightgray;
+}
+
+#button-modify:hover{
+  background-color: gray;
+  border-radius: 20%;
+}
+
+#button-remove:hover{
+  background-color: #be3732;
+  border-radius: 20%;
+}
+
+#time-set{
+  background-color: lightgray;
+  border: 0.5px solid black;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+#event-container{
+  margin: 5px;
+  border: 0.5px solid black;
+  border-radius: 5px;
+}
+
+#button-event-int-pencil{
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+#button-event-int-pencil:hover{
+  background-color: green;
+  color: white;
+}
+
+#label-insert{
+  margin: 5px;
 }
