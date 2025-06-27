@@ -1,0 +1,39 @@
+#btn {
+  background-color: #be3732;
+  margin: 10px;
+  color: white;
+}
+
+.form-range::-webkit-slider-thumb {
+  background: red;
+  background-color: red;
+}
+
+.form-range::-moz-range-thumb {
+  background: red;
+}
+
+.form-range::-ms-thumb {
+  background: red;
+}
+
+.form-range::-webkit-slider-thumb:active {
+  background-color: red;
+}
+
+.form-range::-webkit-slider-thumb {
+  background-color: red;
+}
+
+.form-range:focus::-webkit-slider-thumb {
+  background-color: red;
+}
+
+.form-range:focus::-moz-range-thumb {
+  background-color: red;
+}
+
+.form-range:focus::-ms-thumb {
+  box-shadow: red;
+}
+
